@@ -1,3 +1,4 @@
 import pos_order
 import account_check
 import account_journal
+import point_of_sale
