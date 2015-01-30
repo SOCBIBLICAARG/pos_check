@@ -15,7 +15,8 @@
     'init_xml': [],
     'update': [],
     'data': [
-	'pos_order_view.xml'
+	'pos_order_view.xml',
+	'journal_view.xml',
     ],
     'demo_xml': [],
     'test':[

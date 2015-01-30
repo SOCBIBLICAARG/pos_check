@@ -23,13 +23,15 @@ class pos_order(osv.osv):
                 for obj in self.browse(cr,uid,ids,context=context):
 			if not obj.statement_ids:
 				return True
-			for statement in statement_obj.browse(cr,uid,obj.statement_ids):
-				if statement.journal_id.type == 'third':
-					return_value = True
-					statement_amount = statement.amount
-					break
-			for check in account_check_obj.browse(cr,uid,obj.received_third_check_ids):
-				check_amount += check.amount
+			for statement_id in obj.statement_ids:
+				for statement in statement_obj.browse(cr,uid,statement_id.id):
+					if statement.journal_id.check_in_pos:
+						return_value = True
+						statement_amount = statement.amount
+						break
+			for check_id in obj.received_third_check_ids:
+				for check in account_check_obj.browse(cr,uid,check_id.id):
+					check_amount += check.amount
 			if check_amount != statement_amount:
 				return_value = False
                 return return_value
