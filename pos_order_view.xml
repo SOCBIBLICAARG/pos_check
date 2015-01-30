@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+        <record model="ir.ui.view" id="pos_order_form_check">
+            <field name="name">pos.order.form.check</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+            <field name="arch" type="xml">
+		<field name="statement_ids" position="after" >
+			<separator />
+			<field name="received_third_check_ids" string="Checks"/>
+		</field>
+            </field>
+        </record>
+        
+</data>
+</openerp>
